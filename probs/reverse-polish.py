@@ -14,26 +14,26 @@ class Solution(object):
 				#
 				x = int(stack.pop(-1))
 				y = int(stack.pop(-1))
-				print("Evaluating: " + str(x) + " " + val + " " + str(y))
+				print("Evaluating: " + str(y) + " " + val + " " + str(x) + " and pushing value")
 				stack.append(x+y)
 			elif val == "-":
 				#
 				x = int(stack.pop(-1))
 				y = int(stack.pop(-1))
-				print("Evaluating: " + str(x) + " " + val + " " + str(y))
+				print("Evaluating: " + str(y) + " " + val + " " + str(x) + " and pushing value")
 				stack.append(y-x)
 			elif val == "*":
 				#
 				x = int(stack.pop(-1))
 				y = int(stack.pop(-1))
-				print("Evaluating: " + str(x) + " " + val + " " + str(y))
+				print("Evaluating: " + str(y) + " " + val + " " + str(x) + " and pushing value")
 				stack.append(y*x)
 			elif val == "/":
 				#
 				x = int(stack.pop(-1))
 				y = int(stack.pop(-1))
-				print("Evaluating: " + str(x) + " " + val + " " + str(y))
-				stack.append(y/x)
+				print("Evaluating: " + str(y) + " " + val + " " + str(x) + " and pushing value")
+				stack.append(float(y)/x)
 			else:
 				print("pushing " + val + " to stack")
 				stack.append(val)
@@ -43,3 +43,4 @@ class Solution(object):
 test = Solution()
 test.reversePolish(["2", "1", "+", "3", "*"])
 test.reversePolish(["4", "13", "5", "/", "+"])
+test.reversePolish(["10","6","9","3","+","-11","*","/","*","17","+","5","+"])
