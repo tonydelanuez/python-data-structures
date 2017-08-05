@@ -16,8 +16,9 @@ class LinkedList:
 	def print_list(self):
 		node = self.head
 		while(node):
-			print(node.data)
+			print(str(node.data), end="->")
 			node = node.next
+		print ("END")
 
 	# add a node to the front of the list
 	# must add node, set head as next, set node as head
@@ -44,12 +45,64 @@ class LinkedList:
 
 		# create a node for traversal
 		temp = self.head
-		while temp.next is not None:
+		while temp.next:
 			temp = temp.next
 
 		temp.next = new_node
 
+	# Get the size of the current list 
+	def size(self):
+		temp = self.head
+		count = 0
+		while temp: 
+			count += 1
+			temp = temp.next
+		return count
 
+	# Linear time search on singly linked list
+	def search(self, data):
+		temp = self.head
+		found = False
+		while temp and found is False:
+			if temp.val == data:
+				found = True
+			else:
+				temp = temp.next
+		print("Couldn't find the value: " + str(data))
+		return found
+
+	# Similar to search -- look for the element then delete it. (Deletes first occurrence)
+	def delete(self, data):
+		print("Deleting " + str(data) + " from list: ")
+		self.print_list()
+		print("")
+		temp = self.head
+		found = False
+		previous = None
+		while temp and found is False: 
+			if temp.data == data:
+				found = True
+			else:
+				previous = temp
+				temp = temp.next
+		if temp is None:
+			print("Value " + str(data) + "is not in list")
+		if previous is None:
+			self.head = temp.next
+		else:
+			previous.next = temp.next
+
+	# Reverse the linked list. Perform a three way shuffle/swap
+	def reverse(self):
+		print("Reversing list...")
+		current = self.head
+		previous = None
+		while current: 
+			next = current.next
+			current.next = previous
+			previous = current
+			current = next
+		self.head = previous
 
 if __name__=='__main__':
 	llist = LinkedList()
@@ -62,4 +115,14 @@ if __name__=='__main__':
 	llist.push(6)
 	llist.append(12)
 	llist.insert_after(second, 7)
+	llist.append(15)
+	llist.append(18)
+	for i in range(10):
+		llist.append(i)
+	llist.delete(8)
 	llist.print_list()
+	print("")
+	print("Size: " + str(llist.size()))
+	llist.reverse()
+	llist.print_list()
+	print("Size: " + str(llist.size()))
