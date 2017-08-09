@@ -8,20 +8,28 @@ pale, bale -> true
 pale, bake -> false
 
 """
-letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
 
 
 def one_away(s, t):
-	print("Comparing words: " + str(s) + " and " + str(t))
+	# Get length of both strings
 	m = len(s)
 	n = len(t)
-	# If a character is not the same, apply an offset and check the rest of the array
+	# Iterate through the length of the smaller of the two strings
 	for i in range(min(m, n)):
+		# If the letters don't match, we need to shift the entire array
 		if s[i] != t[i]:
-			# Compute the offset for the next index
-			return s[i + (1 if m >= n else 0):] == t[i + (1 if m <= n else 0):]
-	# Check the tail character(s)
-	return abs(m - n) == 1 
+			# Three cases. s is larger, s is smaller, s same size. 
+			# Take the rest of the subarray of s if s is larger.
+			# Take the rest of the subarray of t is t is larger.
+			# DO NOT FORGET THE COLON. YOU MUST MAKE A SUBARRAY.  
+			# Third case is covered by the >=, <=.  
+			return s[i+(1 if m >= n else 0):] == t[i + (1 if m <= n else 0):]
+	# If there are no mismatches (we don't return) but the difference in length isn't exactly one, we know there are extra characters at the end that break our size limits. 
+	return abs(m - n) == 1
+
+
+
+
 
 print(one_away("pale", "ple"))
 print(one_away("pale", "ple"))
