@@ -9,3 +9,4 @@ def preorder(node):
 		print(node.data)
 		preorder(node.left)
 		preorder(node.right)
+	
