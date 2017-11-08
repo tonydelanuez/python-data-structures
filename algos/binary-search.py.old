@@ -1,0 +1,24 @@
+def binary_search(x, arr):
+	high = len(arr) - 1
+	low = 0
+	mid = 0
+	while (low <= high):
+		mid = (low + high) // 2
+		if x > arr[mid]:
+			low = mid + 1
+		elif x < arr[mid]:
+			high = mid - 1
+		else:
+			return mid
+	return -1
+
+
+a = [1, 2, 4, 6, 8, 10 , 12]
+print(binary_search(1, a)) 
+print(binary_search(2, a))
+print(binary_search(4 ,a))
+print(binary_search(6, a))
+print(binary_search(8, a))
+print(binary_search(10, a))
+print(binary_search(12, a))
+print(binary_search(0, a))

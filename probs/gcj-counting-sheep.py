@@ -26,13 +26,9 @@ Small dataset
 Large dataset
 
 0 ≤ N ≤ 106.
+
 Sample
-
-
 Input 
- 	
-Output 
- 
 5
 0
 1
@@ -40,6 +36,7 @@ Output
 11
 1692
 
+Output
 Case #1: INSOMNIA
 Case #2: 10
 Case #3: 90
