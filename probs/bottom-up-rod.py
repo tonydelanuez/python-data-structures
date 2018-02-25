@@ -3,6 +3,7 @@ import sys
 def bottom_up_rod(p, n):
     r = [-1] * (n + 1)
     r[0] = 0
+
     for j in range(1, n+1):
         q = -sys.maxsize + 1
         for i in range(1, j+1):
